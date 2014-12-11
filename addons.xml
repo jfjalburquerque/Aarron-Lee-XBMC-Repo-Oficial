@@ -17,19 +17,19 @@
 
 <addon id="plugin.video.live.streams"
        name="DigiTele Player"
-       version="5.0.1"
+       version="6.0"
        provider-name="AarronLee, Shani">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
     <import addon="script.module.beautifulsoup" version="3.2.1"/>
-    <import addon="script.module.simple.downloader" version="1.9.4"/>
+    <import addon="script.module.simple.downloader" version="0.9.4"/>
     <import addon="script.module.simplejson" />
   </requires>
   <extension point="xbmc.python.pluginsource" library="default.py">
     <provides>video</provides>
   </extension>
   <extension point="xbmc.addon.metadata">
-    <summary>Reproductor para DIGITELE</summary>
+        <summary>Reproductor para DIGITELE</summary>
     <description>
        Reproductor de video para reproducir los canales premium de DigiTele España
     </description>
