@@ -1,5 +1,0 @@
-﻿Version 5.0.1
-Algunos arreglos menores
-
-Version 5.0.0
-Primera Versión de DigiTele Player
