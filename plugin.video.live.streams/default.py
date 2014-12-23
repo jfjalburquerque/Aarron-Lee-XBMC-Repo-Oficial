@@ -59,7 +59,7 @@ else: SOURCES = []
 
 def addon_log(string):
     if debug == 'true':
-        xbmc.log("[addon.live.streamspro-%s]: %s" %(addon_version, string))
+        xbmc.log("[addon.live.streams-%s]: %s" %(addon_version, string))
 
 
 def makeRequest(url, headers=None):
@@ -729,6 +729,10 @@ def getRegexParsed(regexs, url,cookieJar=None,forCookieJarOnly=False,recursiveCa
                 if  m['page'] and '$doregex' in m['page']:
                     m['page']=getRegexParsed(regexs, m['page'],cookieJar,recursiveCall=True,cachedPages=cachedPages)
 
+                if 'setcookie' in m and m['setcookie'] and '$doregex' in m['setcookie']:
+                    m['setcookie']=getRegexParsed(regexs, m['setcookie'],cookieJar,recursiveCall=True,cachedPages=cachedPages)
+
+                 
                 if  'post' in m and '$doregex' in m['post']:
                     m['post']=getRegexParsed(regexs, m['post'],cookieJar,recursiveCall=True,cachedPages=cachedPages)
                     print 'post is now',m['post']
@@ -755,7 +759,12 @@ def getRegexParsed(regexs, url,cookieJar=None,forCookieJarOnly=False,recursiveCa
                             m['page']=m['page'].replace('$epoctime2$',getEpocTime2())
 
                         #print 'Ingoring Cache',m['page']
-                        req = urllib2.Request(m['page'])
+                        page_split=m['page'].split('|')
+                        pageUrl=page_split[0]
+                        header_in_page=None
+                        if len(page_split)>1:
+                            header_in_page=page_split[1]
+                        req = urllib2.Request(pageUrl)
                         print 'req',m['page']
                         req.add_header('User-Agent', 'Mozilla/5.0 (Windows NT 6.1; rv:14.0) Gecko/20100101 Firefox/14.0.1')
                         if 'refer' in m:
@@ -771,6 +780,11 @@ def getRegexParsed(regexs, url,cookieJar=None,forCookieJarOnly=False,recursiveCa
                             req.add_header('Cookie', m['setcookie'])
                         if 'origin' in m:
                             req.add_header('Origin', m['origin'])
+                        if header_in_page:
+                            header_in_page=header_in_page.split('&')
+                            for h in header_in_page:
+                                n,v=h.split('=')
+                                req.add_header(n,v)
 
 
                         if not cookieJar==None:
@@ -830,7 +844,13 @@ def getRegexParsed(regexs, url,cookieJar=None,forCookieJarOnly=False,recursiveCa
                         if forCookieJarOnly:
                             return cookieJar# do nothing
                     elif m['page'] and  not m['page'].startswith('http'):
-                        link=m['page']
+                        if m['page'].startswith('$pyFunction:'):
+                            val=doEval(m['page'].split('$pyFunction:')[1],'',cookieJar )
+                            if forCookieJarOnly:
+                                return cookieJar# do nothing
+                            link=val
+                        else:
+                            link=m['page']
                 if '$pyFunction:playmedia(' in m['expre'] or  any(x in url for x in g_ignoreSetResolved):
                     setresolved=False
                 if  '$doregex' in m['expre']:
@@ -850,7 +870,7 @@ def getRegexParsed(regexs, url,cookieJar=None,forCookieJarOnly=False,recursiveCa
 
                         val=doEval(m['expre'].split('$pyFunction:')[1],link,cookieJar )
 
-                        print 'url and val',url,val
+                        print 'url k val',url,k,val
 
                         url = url.replace("$doregex[" + k + "]", val)
                     else:
@@ -868,10 +888,10 @@ def getRegexParsed(regexs, url,cookieJar=None,forCookieJarOnly=False,recursiveCa
                         if 'htmlunescape' in m:
                             #val=urllib.unquote_plus(val)
                             import HTMLParser
-                            val=HTMLParser.HTMLParser().unescape(val)
+                            val=HTMLParser.HTMLParser().unescape(val)                     
                         url = url.replace("$doregex[" + k + "]", val)
                         #return val
-                else:
+                else:           
                     url = url.replace("$doregex[" + k + "]",'')
         if '$epoctime$' in url:
             url=url.replace('$epoctime$',getEpocTime())
@@ -980,6 +1000,19 @@ def get_leton_rtmp(page_value, referer=None):
     ret= 'rtmp://' + str(a) + '.' + str(b) + '.' + str(c) + '.' + str(d) + v;
     return ret
 
+
+def SaveToFile(file_name,page_data):
+	f=open(file_name,'wb')
+	f.write(page_data)
+	f.close()
+	return ''
+    
+def LoadFile(file_name):
+	f=open(file_name,'rb')
+	d=f.read()
+	f.close()
+	return d
+    
 def get_packed_iphonetv_url(page_data):
 	import re,base64,urllib; 
 	s=page_data

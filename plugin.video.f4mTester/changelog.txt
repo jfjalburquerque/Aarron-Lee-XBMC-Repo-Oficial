@@ -18,3 +18,19 @@
 - couple of links fixed
 [B]Version 1.0.15[/B]
 - making easier for livestream call
+[B]Version 1.0.16[/B]
+- added nested manifest example
+[B]Version 1.0.17[/B]
+- removed import of t0mm0 common, wasn't even being used
+[B]Version 1.0.18[/B]
+- Support for proxy param
+[B]Version 2.0.0[/B]
+- Support for passing simple downloader flag
+[B]Version 2.0.1[/B]
+- Support for auth param
+[B]Version 2.0.1[/B]
+- bump version 2.1.2
+[B]Version 2.1.3[/B]
+- fixed auth param
+[B]Version 2.1.4[/B]
+- added stream type for hls support including DRM HLS
