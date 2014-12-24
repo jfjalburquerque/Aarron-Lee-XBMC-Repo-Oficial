@@ -72,28 +72,8 @@ def checkForAlternateStreaming(url):
         print '****** Alternate ITV ******'
         print url
         return alternateStream(url)
-
-    if 'plugin.video.digiteleplayerpremium' in url:
-        print '****** Alternate DigiTele Player ******'
-        print url
-        return alternateStream(url)
-		
-    if 'plugin.video.live.streams' in url:
-        print '****** Alternate DigiTele Player ******'
-        print url
-        return alternateStream(url)
-		
-    if 'plugin.video.live.streamspro' in url:
-        print '****** Alternate DigiTele Player ******'
-        print url
-        return alternateStream(url)
 		
     if 'plugin.video.digiteleplayerpremium' in url:
-        print '****** Alternate DigiTele Player ******'
-        print url
-        return alternateStream(url)
-		
-    if 'plugin.video.f4mTester' in url:
         print '****** Alternate DigiTele Player ******'
         print url
         return alternateStream(url)

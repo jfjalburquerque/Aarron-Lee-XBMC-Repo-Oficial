@@ -29,7 +29,7 @@ xbmc.Player().stop
 ADDON       = xbmcaddon.Addon(id = 'script.tvguideaarronlee')
 HOME        = ADDON.getAddonInfo('path')
 TITLE       = 'DigiTele TV Esp'
-VERSION     = '5.2.7'
+VERSION     = '5.2.8'
 addon       = xbmcaddon.Addon()
 addonid     = addon.getAddonInfo('id')
 versioninfo = addon.getAddonInfo('version')

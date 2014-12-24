@@ -1,3 +1,6 @@
+v5.2.8
+Reproductor FIX
+
 v5.2.7
 Servidor "upgrade"
 
