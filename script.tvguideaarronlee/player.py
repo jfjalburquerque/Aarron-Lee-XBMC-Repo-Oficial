@@ -78,10 +78,10 @@ def checkForAlternateStreaming(url):
         print url
         return alternateStream(url)
 		
-    if 'plugin.video.live.streams' in url:
-        print '****** Alternate DigiTele Player ******'
-        print url
-        return alternateStream(url)
+    # if 'plugin.video.live.streams' in url:
+    #     print '****** Alternate DigiTele Player ******'
+    #     print url
+    #     return alternateStream(url)
 		
     if 'plugin.video.live.streamspro' in url:
         print '****** Alternate DigiTele Player ******'
