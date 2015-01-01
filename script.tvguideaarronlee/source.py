@@ -941,16 +941,16 @@ class DIGITELESource(Source):
         digiteleUrl = self.digiteleUrl.upper()
 
         if digiteleUrl == 'PAQUETE TOTAL':
-            return 'http://www.digitele.es/pluginfiles/guide.xml'
+            return 'http://digiteletv.premiumhostingweb.com/guide.xml'
 
         if digiteleUrl == 'DIGITAL+ - TDT':
-            return 'http://www.digitele.es/pluginfiles/guide-spain.xml'
+            return 'http://digiteletv.premiumhostingweb.com/guide-spain.xml'
 			
         if digiteleUrl == 'DEPORTES':
-            return 'http://www.digitele.es/pluginfiles/guide-deportes.xml'
+            return 'http://digiteletv.premiumhostingweb.com/guide-deportes.xml'
 			
         if digiteleUrl == 'SKYDIGITAL UK':
-            return 'http://www.digitele.es/pluginfiles/guide-uk.xml'
+            return 'http://digiteletv.premiumhostingweb.com/guide-uk.xml'
 			
 
 
@@ -995,7 +995,7 @@ class DIGITELESource(Source):
     def getCategories(self):
         cat  = dict()
         path = os.path.join(datapath, 'cats.xml')
-        url = 'http://www.digitele.es/pluginfiles/cats.xml'
+        url = 'http://digiteletv.premiumhostingweb.com/cats.xml'
         f = urllib2.urlopen(url, timeout=30)
         xml = f.read()
         f.close()

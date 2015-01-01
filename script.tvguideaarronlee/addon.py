@@ -29,7 +29,7 @@ xbmc.Player().stop
 ADDON       = xbmcaddon.Addon(id = 'script.tvguideaarronlee')
 HOME        = ADDON.getAddonInfo('path')
 TITLE       = 'DigiTele TV Esp'
-VERSION     = '5.2.9'
+VERSION     = '5.3.0'
 addon       = xbmcaddon.Addon()
 addonid     = addon.getAddonInfo('id')
 versioninfo = addon.getAddonInfo('version')
@@ -102,7 +102,7 @@ except:
 
 path = fav_xml
 try:
-    url = 'http://www.digitele.es/pluginfiles/favourites-digiteletv.xml'
+    url = 'http://digiteletv.premiumhostingweb.com/favourites-digiteletv.xml'
     urllib.urlretrieve(url, path)
 except:
     pass

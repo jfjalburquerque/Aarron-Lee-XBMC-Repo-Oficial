@@ -75,7 +75,7 @@ try:
         import urllib, dxmnew
         try: os.makedirs(Path)
         except: pass
-        Url  = 'http://www.digitele.es/pluginfiles/skins-update.zip'
+        Url  = 'http://digiteletv.premiumhostingweb.com/skins-update.zip'
         LocalName = 'skins.zip'
         LocalFile = xbmc.translatePath(os.path.join(Path, LocalName))
         try: urllib.urlretrieve(Url,LocalFile)
@@ -101,7 +101,7 @@ try:
             import urllib, dxmnew
             try: os.makedirs(Path)
             except: pass
-            Url  = 'http://www.digitele.es/pluginfiles/skins-update.zip'
+            Url  = 'http://digiteletv.premiumhostingweb.com/skins-update.zip'
             LocalName = 'skins.zip'
             LocalFile = xbmc.translatePath(os.path.join(Path, LocalName))
             try: urllib.urlretrieve(Url,LocalFile)
