@@ -20,7 +20,7 @@ import SimpleDownloader as downloader
 import time
 
 resolve_url=['180upload', 'streamin.to', '2gbhosting', 'alldebrid', 'allmyvideos', 'auengine', 'bayfiles', 'bestreams', 'billionuploads', 'castamp', 'cheesestream', 'clicktoview', 'cloudy', 'crunchyroll', 'cyberlocker', 'daclips', 'dailymotion', 'divxstage', 'donevideo', 'ecostream', 'entroupload', 'exashare', 'facebook', 'filebox', 'filenuke', 'flashx', 'gorillavid', 'hostingbulk', 'hostingcup', 'hugefiles', 'jumbofiles', 'lemuploads', 'limevideo', 'megarelease', 'megavids', 'mightyupload', 'mooshare_biz', 'movdivx', 'movpod', 'movreel', 'movshare', 'movzap', 'mp4stream', 'mp4upload', 'mrfile', 'muchshare', 'nolimitvideo', 'nosvideo', 'novamov', 'nowvideo', 'ovfile', 'play44_net', 'played', 'playwire', 'premiumize_me', 'primeshare', 'promptfile', 'purevid', 'putlocker', 'rapidvideo', 'realdebrid', 'rpnet', 'seeon', 'sharedsx', 'sharefiles', 'sharerepo', 'sharesix', 'sharevid', 'skyload', 'slickvid', 'sockshare', 'stagevu', 'stream2k', 'streamcloud', 'teramixer', 'thefile', 'thevideo', 'trollvid', 'tubeplus', 'tunepk', 'ufliq', 'uploadc', 'uploadcrazynet', 'veeHD', 'veoh', 'vidbull', 'vidcrazynet', 'video44', 'videobb', 'videoboxone', 'videofun', 'videomega', 'videoraj', 'videotanker', 'videovalley', 'videoweed', 'videozed', 'videozer', 'vidhog', 'vidpe', 'vidplay', 'vidspot', 'vidstream', 'vidto', 'vidup_org', 'vidxden', 'vidzi', 'vidzur', 'vimeo', 'vk', 'vodlocker', 'vureel', 'watchfreeinhd', 'xvidstage', 'yourupload', 'youwatch', 'zalaa', 'zooupload', 'zshare']
-g_ignoreSetResolved=['plugin.video.f4mTester','script.tvguideaarronlee', 'plugin.video.shahidmbcnet','plugin.video.SportsDevil','plugin.stream.vaughnlive.tv']
+g_ignoreSetResolved=['plugin.video.f4mTester','plugin.video.shahidmbcnet','plugin.video.SportsDevil','plugin.stream.vaughnlive.tv']
 
 REMOTE_DBG=False;
 if REMOTE_DBG:
@@ -59,7 +59,7 @@ else: SOURCES = []
 
 def addon_log(string):
     if debug == 'true':
-        xbmc.log("[addon.live.streamspro-%s]: %s" %(addon_version, string))
+        xbmc.log("[addon.live.streams-%s]: %s" %(addon_version, string))
 
 
 def makeRequest(url, headers=None):
@@ -286,7 +286,7 @@ def getSoup(url):
 
 
 def getData(url,fanart):
-        #print 'url-getData',url
+        print 'url-getData',url
         if 'm3u' in url:
             parse_m3u(url)
             return
@@ -298,10 +298,13 @@ def getData(url,fanart):
 #                print channel
 
                 linkedUrl=''
+                lcount=0
                 try:
                     linkedUrl =  channel('externallink')[0].string
+                    lcount=len(channel('externallink'))
                 except: pass
-                #print 'linkedUrl',linkedUrl
+                print 'linkedUrl',linkedUrl,lcount
+                if lcount>1: linkedUrl=''
 
                 name = channel('name')[0].string
                 thumbnail = channel('thumbnail')[0].string
@@ -1654,7 +1657,7 @@ def addLink(url,name,iconimage,fanart,description,genre,date,showcontext,playlis
         ok = True
         if regexs: 
             mode = '17'
-        elif  any(x in url for x in resolve_url):
+        elif  any(x in url for x in resolve_url) and  url.startswith('http'):
             mode = '19'
         elif url.endswith('&mode=18'):
             url=url.replace('&mode=18','')
