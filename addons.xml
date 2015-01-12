@@ -15,28 +15,6 @@
     </extension>
 </addon>
 
-<addon id="plugin.video.live.streams"
-       name="DigiTele Player"
-       version="6.3"
-       provider-name="AarronLee, Shani">
-   <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-    <import addon="script.module.beautifulsoup" version="3.2.1"/>
-    <import addon="script.module.simple.downloader" version="0.9.4"/>
-    <import addon="script.module.simplejson" />
-  </requires>
-  <extension point="xbmc.python.pluginsource" library="default.py">
-    <provides>video</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-        <summary>Reproductor para DIGITELE</summary>
-    <description>
-       Reproductor de video para reproducir los canales premium de DigiTele España
-    </description>
-    <platform>all</platform>
-  </extension>
-</addon>
-
 <addon id="plugin.video.notfilmon" name="NotFilmOn" version="4.9.2" provider-name=".[COLOR blue]X[/COLOR]unity[COLOR blue]T[/COLOR]alk">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
@@ -312,7 +290,7 @@ Créditos: Cristi - Atlanta (xsopcast plugin); NouisMons (acestream engine plugi
     </extension>
 </addon>
 
-<addon id="script.tvguideaarronlee" name="DigiTele TV España" version="5.3.0" provider-name="AarronLee, DixieDean, Spoyser">
+<addon id="script.tvguideaarronlee" name="DigiTele TV España" version="5.3.1" provider-name="AarronLee, DixieDean, Spoyser">
     <requires>
 		<import addon="xbmc.python" version="2.1.0"/>
         <import addon="script.module.simplejson" version="2.0.10"/>
@@ -323,7 +301,6 @@ Créditos: Cristi - Atlanta (xsopcast plugin); NouisMons (acestream engine plugi
 		<import addon="plugin.video.p2p-streams" version="0.2.7"/>
         <import addon="plugin.video.SportsDevil" version="2.0.2"/>
 		<import addon="plugin.video.f4mTester" version="2.1.7"/>
-		<import addon="plugin.video.live.streams" version="6.1"/>
         <import addon="repository.MaxMustermann.xbmc" version="1.0.1"/>
 	    <import addon="repository.p2p-streams.xbmc" version="1.0.3"/>
 		<import addon="repository.SportsDevil" version="1.0.1"/>
